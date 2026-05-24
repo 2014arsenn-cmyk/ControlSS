@@ -25,6 +25,19 @@ echo   1. Открыть Paint
 	echo   15. Открыть поиск
 	echo   16. Симуляция матрицы
 	echo   17. Стать мамкиным хацкером
+	echo   18. Статус диска
+	echo   19. Сброс и обновление сетевых настроек
+	echo   20. Удаление или изменение программ
+	echo   21. Очистить память
+	echo   22. Информация о системе (^msinfo32^)
+	echo -----Панель управления-----
+	echo   23. Настройка мыши и тачпада
+	echo   24. Свойства системы
+	echo   25. Электропитание
+	echo   26. Звуковые устройства
+	echo   27. Диспетчер устройств
+	echo ----------------------------
+	echo =
 echo ---------------
 set /p choice="Ваш выбор (номер): "
 
@@ -127,12 +140,102 @@ if "%choice%"=="17" (
     echo [ГОТОВО]: Все данные успешно скопированы на ваш ПК.
     echo.
     color 0A
-    echo Шутка! Ваши файлы в безопасности. :)
+    echo Шутка! Ваши файлы в безопасности. :^)
     pause
+	color 0B
+    goto menu
+
+
+)
+if "%choice%"=="18" (
+    wmic diskdrive get status
+	pause
+	goto menu
+
+)
+if "%choice%"=="19" (
+    ipconfig /release & ipconfig /renew & ipconfig /flushdns
+	pause
+	goto menu
+	
+)
+if "%choice%"=="20" (
+    start appwiz.cpl
+	goto menu
+	
+
+)
+if "%choice%"=="21" (
+    cls
+    color 0E
+    echo ===================================================
+    echo   ЗАПУСК ГЛУБОКОЙ ОЧИСТКИ СИСТЕМЫ И БРАУЗЕРОВ...
+    echo ===================================================
+    echo.
+    echo [1/3] Закрываем браузеры...
+    taskkill /f /im chrome.exe /im browser.exe /im msedge.exe >nul 2>&1
+    timeout /t 2 > nul
+
+    echo [2/3] Очистка системных папок Temp...
+    del /f /s /q "C:\Windows\Temp\*.*" >nul 2>&1
+    
+    echo [3/3] Очистка кэша профиля пользователя...
+    cd /d "C:\Users"
+    for /d %%u in (*) do (
+        del /f /s /q "%%u\AppData\Local\Temp\*.*" >nul 2>&1
+        del /f /s /q "%%u\AppData\Local\Google\Chrome\User Data\Default\Cache\*.*" >nul 2>&1
+        del /f /s /q "%%u\AppData\Local\Yandex\YandexBrowser\User Data\Default\Cache\*.*" >nul 2>&1
+        del /f /s /q "%%u\AppData\Local\Microsoft\Edge\User Data\Default\Cache\*.*" >nul 2>&1
+    )
+
+    echo.
+    color 0A
+    echo ===================================================
+    echo   ОЧИСТКА УСПЕШНО ЗАВЕРШЕНА!
+    echo ===================================================
+    echo.
+    pause
+	color 0B
     goto menu
 )
 
 
+)
+if "%choice%"=="22" (
+    start msinfo32
+	goto menu
+
+)
+if "%choice%"=="23" (
+    start main.cpl
+	goto menu
+	
+	
+)
+if "%choice%"=="24" (
+    start sysdm.cpl
+	goto menu
+	
+)
+if "%choice%"=="25" (
+    start powercfg.cpl
+	goto menu
+	
+)
+if "%choice%"=="26" (
+    start mmsys.cpl
+	goto menu
+	
+)
+if "%choice%"=="27" (
+    start devmgmt.msc
+	goto menu
+
+)
+if "%choice%"=="28" (
+    start msinfo32
+	goto menu
+	
 )
 
 goto menu
