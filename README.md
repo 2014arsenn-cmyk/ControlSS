@@ -1,2 +1,3 @@
 Простая утилита, в которой вы можете совершать действия Windows легко и быстро, такие как смена темы, открытие конкретных настроек и визуальных приколов.
-<img width="979" height="512" alt="image" src="https://github.com/user-attachments/assets/95935906-6adf-4340-ba4b-6f57034ac7b0" />
+<img width="1165" height="638" alt="image" src="https://github.com/user-attachments/assets/441efea0-7771-4904-b142-597976193aee" />
+
